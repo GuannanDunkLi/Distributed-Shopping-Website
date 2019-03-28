@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Table(name = "tb_spu")
@@ -22,13 +23,19 @@ public class Spu {
     private String title;// 标题
     private String subTitle;// 子标题
     private Boolean saleable;// 是否上架
+    private Date createTime;// 创建时间
+
     @JsonIgnore
     private Boolean valid;// 是否有效，逻辑删除用
-    private Date createTime;// 创建时间
     @JsonIgnore
     private Date lastUpdateTime;// 最后修改时间
+
     @Transient
     private String cname;
     @Transient
     private String bname;
+    @Transient
+    private List<Sku> skus;
+    @Transient
+    private SpuDetail spuDetail;
 }

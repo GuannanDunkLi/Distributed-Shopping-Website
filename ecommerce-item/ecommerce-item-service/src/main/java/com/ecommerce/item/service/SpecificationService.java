@@ -29,9 +29,11 @@ public class SpecificationService {
         return list;
     }
 
-    public List<SpecParam> queryParamByGid(Long gid) {
+    public List<SpecParam> queryParamList(Long gid, Long cid, Boolean searching) {
         SpecParam param = new SpecParam();
         param.setGroupId(gid);
+        param.setCid(cid);
+        param.setSearching(searching);
         List<SpecParam> list = specParamMapper.select(param);
         if (CollectionUtils.isEmpty(list)){
             throw new EException(ExceptionEnum.SPEC_PARAM_NOT_FOUND);

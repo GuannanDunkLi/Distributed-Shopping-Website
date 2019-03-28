@@ -3,19 +3,23 @@ package com.ecommerce.item.service;
 import com.ecommerce.common.enums.ExceptionEnum;
 import com.ecommerce.common.exception.EException;
 import com.ecommerce.common.vo.PageResult;
+import com.ecommerce.item.mapper.SkuMapper;
 import com.ecommerce.item.mapper.SpuDetailMapper;
 import com.ecommerce.item.mapper.SpuMapper;
-import com.ecommerce.item.pojo.Category;
-import com.ecommerce.item.pojo.Spu;
+import com.ecommerce.item.mapper.StockMapper;
+import com.ecommerce.item.pojo.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +29,10 @@ public class GoodsService {
     private SpuMapper spuMapper;
     @Autowired
     private SpuDetailMapper spuDetailMapper;
+    @Autowired
+    private SkuMapper skuMapper;
+    @Autowired
+    private StockMapper stockMapper;
     @Autowired
     private CategoryService categoryService;
     @Autowired
@@ -68,5 +76,69 @@ public class GoodsService {
             // 处理品牌名称
             spu.setBname(brandService.queryById(spu.getBrandId()).getName());
         }
+    }
+
+    @Transactional
+    public void saveGoods(Spu spu) {
+        // 新增spu
+        spu.setId(null);
+        spu.setCreateTime(new Date());
+        spu.setLastUpdateTime(spu.getCreateTime());
+        spu.setSaleable(true);
+        spu.setValid(false);
+        int count = spuMapper.insert(spu);
+        if (count != 1){
+            throw new EException(ExceptionEnum.GOODS_SAVE_ERROR);
+        }
+        // 新增spuDetail
+        SpuDetail spuDetail = spu.getSpuDetail();
+        spuDetail.setSpuId(spu.getId());
+        spuDetailMapper.insert(spuDetail);
+        // 定义库存集合，方便下面批量新增库存
+        List<Stock> stockList = new ArrayList<>();
+        // 新增sku
+        List<Sku> skus = spu.getSkus();
+        for (Sku sku : skus) {
+            sku.setCreateTime(new Date());
+            sku.setLastUpdateTime(sku.getCreateTime());
+            sku.setSpuId(spu.getId());
+            count = skuMapper.insert(sku);
+            if (count != 1){
+                throw new EException(ExceptionEnum.GOODS_SAVE_ERROR);
+            }
+            // 新增库存
+            Stock stock = new Stock();
+            stock.setSkuId(sku.getId());
+            stock.setStock(sku.getStock());
+            stockList.add(stock);
+        }
+        // 批量新增库存
+        stockMapper.insertList(stockList);
+    }
+
+    public SpuDetail queryDetailById(Long spuId) {
+        SpuDetail spuDetail = spuDetailMapper.selectByPrimaryKey(spuId);
+        if(spuDetail == null){
+            throw new EException(ExceptionEnum.GOODS_DETAIL_NOT_FOUND);
+        }
+        return spuDetail;
+    }
+
+    public List<Sku> querySkuBySpuId(Long spuId) {
+        Sku sku = new Sku();
+        sku.setSpuId(spuId);
+        List<Sku> list = skuMapper.select(sku);
+        if(CollectionUtils.isEmpty(list)){
+            throw new EException(ExceptionEnum.GOODS_SKU_NOT_FOUND);
+        }
+        // 查询库存
+        for (Sku s :list) {
+            Stock stock = stockMapper.selectByPrimaryKey(s.getId());
+            if(stock == null){
+                throw new EException(ExceptionEnum.GOODS_STOCK_NOT_FOUND);
+            }
+            s.setStock(stock.getStock());
+        }
+        return list;
     }
 }

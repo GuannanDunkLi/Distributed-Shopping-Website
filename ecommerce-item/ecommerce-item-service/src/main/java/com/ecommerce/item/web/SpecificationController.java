@@ -5,10 +5,7 @@ import com.ecommerce.item.pojo.SpecParam;
 import com.ecommerce.item.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,9 +21,12 @@ public class SpecificationController {
         return ResponseEntity.ok(specificationService.queryGroupByCid(cid));
     }
 
-    // 根据组id查询参数
+    // 查询参数集合
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> queryParamByGid(Long gid){
-        return ResponseEntity.ok(specificationService.queryParamByGid(gid));
+    public ResponseEntity<List<SpecParam>> queryParamList(
+            @RequestParam(value = "gid", required = false) Long gid,
+            @RequestParam(value = "cid", required = false) Long cid,
+            @RequestParam(value = "searching", required = false) Boolean searching){
+        return ResponseEntity.ok(specificationService.queryParamList(gid, cid, searching));
     }
 }
