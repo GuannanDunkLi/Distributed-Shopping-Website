@@ -16,7 +16,7 @@ public class Sku {
     private Long id;
     private Long spuId;
     private String title;
-    private String images;
+    private String images; // 多张图片会以逗号隔开
     private Long price;
     private String ownSpec; // 商品特殊规格的键值对
     private String indexes; // 商品特殊规格的下标

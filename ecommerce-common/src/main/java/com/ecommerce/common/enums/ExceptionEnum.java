@@ -20,6 +20,7 @@ public enum ExceptionEnum {
     GOODS_STOCK_NOT_FOUND(404,"商品stock不存在"),
     UPLOAD_FILE_ERROR(500,"文件上传失败"),
     INVALID_FILE_TYPE(400,"无效的文件类型"),
+    GOODS_UPDATE_ERROR(500,"商品更新失败")
     ;
     private int code;
     private String msg;

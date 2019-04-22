@@ -8,11 +8,12 @@
         <module>ecommerce-item</module>
         <module>ecommerce-common</module>
         <module>ecommerce-upload</module>
+        <module>ecommerce-search</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.1.RELEASE</version>
+        <version>2.0.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ecommerce.parent</groupId>

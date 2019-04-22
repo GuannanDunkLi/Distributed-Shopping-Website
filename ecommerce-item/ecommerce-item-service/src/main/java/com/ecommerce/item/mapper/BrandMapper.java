@@ -1,15 +1,15 @@
 package com.ecommerce.item.mapper;
 
+import com.ecommerce.common.mapper.BaseMapper;
 import com.ecommerce.item.pojo.Brand;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 @Repository
-public interface BrandMapper extends Mapper<Brand> {
+public interface BrandMapper extends BaseMapper<Brand> {
     @Insert("INSERT INTO tb_category_brand (category_id, brand_id) VALUES (#{cid},#{bid})")
     int insertCategoryBrand(Long cid, Long bid);
 

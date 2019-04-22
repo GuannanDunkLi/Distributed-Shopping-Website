@@ -17,7 +17,7 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    /**
+    /*
      * 分页查询spu信息
      * @param: page
      * @param: rows
@@ -36,7 +36,7 @@ public class GoodsController {
         return ResponseEntity.ok(goodsService.querySpuByPage(page, rows, saleable, key));
     }
 
-    /**
+    /*
      * 商品新增
      * @param: spu
      * @return ResponseEntity<Void>
@@ -44,12 +44,12 @@ public class GoodsController {
      * @date 2019/3/28
      */
     @PostMapping("goods")
-    public ResponseEntity<Void> saveGoods(@RequestBody Spu spu){
+    public ResponseEntity<Void> saveGoods(@RequestBody Spu spu) {
         goodsService.saveGoods(spu);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    /**
+    /*
      * 根据spu的id查询商品详情
      * @param: spuId
      * @return ResponseEntity<SpuDetail>
@@ -57,11 +57,11 @@ public class GoodsController {
      * @date 2019/3/28
      */
     @GetMapping("spu/detail/{id}")
-    public ResponseEntity<SpuDetail> queryDetailById(@PathVariable("id") Long spuId){
+    public ResponseEntity<SpuDetail> queryDetailById(@PathVariable("id") Long spuId) {
         return ResponseEntity.ok(goodsService.queryDetailById(spuId));
     }
 
-    /**
+    /*
      * 根据spu的id查询所有sku
      * @param: spuId
      * @return ResponseEntity<List<Sku>>
@@ -69,7 +69,20 @@ public class GoodsController {
      * @date 2019/3/28
      */
     @GetMapping("sku/list")
-    public ResponseEntity<List<Sku>> querySkuBySpuId(@RequestParam("id") Long spuId){
+    public ResponseEntity<List<Sku>> querySkuBySpuId(@RequestParam("id") Long spuId) {
         return ResponseEntity.ok(goodsService.querySkuBySpuId(spuId));
+    }
+
+    /*
+     * 商品修改
+     * @param: spu
+     * @return ResponseEntity<Void>
+     * @author dunklee
+     * @date 2019/3/28
+     */
+    @PutMapping("goods")
+    public ResponseEntity<Void> updateGoods(@RequestBody Spu spu) {
+        goodsService.updateGoods(spu);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

@@ -21,7 +21,15 @@ public class SpecificationController {
         return ResponseEntity.ok(specificationService.queryGroupByCid(cid));
     }
 
-    // 查询参数集合
+    /*
+     * 查询规格参数集合
+     * @param: gid
+     * @param: cid
+     * @param: searching
+     * @return ResponseEntity<List<SpecParam>>
+     * @author dunklee
+     * @date 2019/4/9
+     */
     @GetMapping("params")
     public ResponseEntity<List<SpecParam>> queryParamList(
             @RequestParam(value = "gid", required = false) Long gid,
