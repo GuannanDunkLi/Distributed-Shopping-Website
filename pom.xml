@@ -9,6 +9,7 @@
         <module>ecommerce-common</module>
         <module>ecommerce-upload</module>
         <module>ecommerce-search</module>
+        <module>ecommerce-page</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -16,6 +16,7 @@ import com.ecommerce.search.repository.GoodsRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -179,7 +180,7 @@ public class SearchService {
         // 分页
         queryBuilder.withPageable(PageRequest.of(page, size));
         // 搜索过滤
-        QueryBuilder basicQuery = QueryBuilders.matchQuery("all", key);
+        QueryBuilder basicQuery = buildBasicQuery(request);
         queryBuilder.withQuery(basicQuery);
         // 聚合分类和品牌
         String categoryAggName = "category_agg";
@@ -202,6 +203,25 @@ public class SearchService {
             specs = buildSpecificationAgg(categories.get(0).getId(), basicQuery);
         }
         return new SearchResult(totalElements, totalPages, content, categories, brands,specs);
+    }
+
+    private QueryBuilder buildBasicQuery(SearchRequest request) {
+        // 创建布尔查询
+        BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
+        // 查询条件
+        queryBuilder.must(QueryBuilders.matchQuery("all", request.getKey()));
+        // 过滤条件
+        Map<String, String> filter = request.getFilter();
+        for (Map.Entry<String, String> entry : filter.entrySet()) {
+            String key = entry.getKey();
+            // 处理key
+            if(!"cid3".equals(key) && !"brandId".equals(key)) {
+                key = "specs."+key+".keyword";
+            }
+            String value = entry.getValue();
+            queryBuilder.filter(QueryBuilders.termQuery(key, value));
+        }
+        return queryBuilder;
     }
 
     private List<Map<String, Object>> buildSpecificationAgg(Long cid, QueryBuilder basicQuery) {

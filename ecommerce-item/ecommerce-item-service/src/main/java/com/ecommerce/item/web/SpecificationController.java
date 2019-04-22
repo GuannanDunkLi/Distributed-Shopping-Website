@@ -28,7 +28,6 @@ public class SpecificationController {
      * @param: searching
      * @return ResponseEntity<List<SpecParam>>
      * @author dunklee
-     * @date 2019/4/9
      */
     @GetMapping("params")
     public ResponseEntity<List<SpecParam>> queryParamList(
@@ -36,5 +35,16 @@ public class SpecificationController {
             @RequestParam(value = "cid", required = false) Long cid,
             @RequestParam(value = "searching", required = false) Boolean searching){
         return ResponseEntity.ok(specificationService.queryParamList(gid, cid, searching));
+    }
+
+    /*
+     * 根据分类cid3查询规格参数详细信息
+     * @param: cid
+     * @return List<SpecGroup>
+     * @author dunklee
+     */
+    @GetMapping("group")
+    public ResponseEntity<List<SpecGroup>> queryAllByCid(@RequestParam("cid") Long cid) {
+        return ResponseEntity.ok(specificationService.queryAllByCid(cid));
     }
 }

@@ -47,4 +47,13 @@ public interface GoodsApi {
      */
     @GetMapping("sku/list")
     List<Sku> querySkuBySpuId(@RequestParam("id") Long spuId);
+
+    /*
+     * 根据spu的id查询spu信息
+     * @param: id
+     * @return com.ecommerce.item.pojo.Spu
+     * @author dunklee
+     */
+    @GetMapping("spu/{id}")
+    Spu querySpuById(@PathVariable("id") Long id);
 }
