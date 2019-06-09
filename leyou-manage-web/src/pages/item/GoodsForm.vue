@@ -1,16 +1,16 @@
 <template>
   <v-stepper v-model="step">
     <v-stepper-header>
-      <v-stepper-step :complete="step > 1" step="1">基本信息</v-stepper-step>
+      <v-stepper-step :complete="step > 1" step="1">Basic</v-stepper-step>
       <v-divider/>
-      <v-stepper-step :complete="step > 2" step="2">商品描述</v-stepper-step>
+      <v-stepper-step :complete="step > 2" step="2">Description</v-stepper-step>
       <v-divider/>
-      <v-stepper-step :complete="step > 3" step="3">规格参数</v-stepper-step>
+      <v-stepper-step :complete="step > 3" step="3">Specification</v-stepper-step>
       <v-divider/>
-      <v-stepper-step step="4">SKU属性</v-stepper-step>
+      <v-stepper-step step="4">SKU</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items>
-      <!--1、基本信息-->
+      <!--1、Basic-->
       <v-stepper-content step="1">
         <v-flex class="xs10 mx-auto">
           <v-form v-model="valid" ref="basic">
@@ -22,7 +22,7 @@
                   required
                   showAllLevels
                   v-model="goods.categories"
-                  label="请选择商品分类"/>
+                  label="Category"/>
               </v-flex>
               <v-spacer/>
               <v-flex xs5>
@@ -31,13 +31,13 @@
                   :items="brandOptions"
                   item-text="name"
                   item-value="id"
-                  label="所属品牌"
+                  label="Brand"
                   v-model="goods.brandId"
                   required
                   autocomplete
                   clearable
                   dense chips
-                  :rules="[v => !!v || '品牌不能为空']"
+                  :rules="[v => !!v || 'cant be null']"
                 >
                   <template slot="selection" slot-scope="data">
                     <v-chip small>{{ data.item.name}}</v-chip>
@@ -45,10 +45,10 @@
                 </v-select>
               </v-flex>
             </v-layout>
-            <v-text-field label="商品标题" v-model="goods.title" :counter="200" required :rules="[v => !!v || '商品标题不能为空']" hide-details/>
-            <v-text-field label="商品卖点" v-model="goods.subTitle" :counter="200" hide-details/>
-            <v-text-field label="包装清单" v-model="goods.spuDetail.packingList" :counter="1000" multi-line :rows="3" hide-details/>
-            <v-text-field label="售后服务" v-model="goods.spuDetail.afterService" :counter="1000" multi-line :rows="3" hide-details/>
+            <v-text-field label="Title" v-model="goods.title" :counter="200" required :rules="[v => !!v || '商品标题不能为空']" hide-details/>
+            <v-text-field label="SellingPoint" v-model="goods.subTitle" :counter="200" hide-details/>
+            <v-text-field label="List" v-model="goods.spuDetail.packingList" :counter="1000" multi-line :rows="3" hide-details/>
+            <v-text-field label="Service" v-model="goods.spuDetail.afterService" :counter="1000" multi-line :rows="3" hide-details/>
           </v-form>
         </v-flex>
       </v-stepper-content>
@@ -82,7 +82,7 @@
             <!--特有参数的待选项，需要判断是否有options，如果没有，展示文本框，让用户自己输入-->
             <v-card-text class="px-5">
               <div v-for="i in spec.options.length+1" :key="i" class="layout row px-5">
-                <v-text-field :placeholder="'新的' + spec.name + ':'" class="flex xs10" auto-grow
+                <v-text-field :placeholder="'new' + spec.name + ':'" class="flex xs10" auto-grow
                               v-model="spec.options[i-1]" v-bind:value="i" single-line hide-details/>
 
                 <v-btn @click="spec.options.splice(i-1,1)" v-if="i <= spec.options.length" icon>
@@ -93,7 +93,7 @@
           </v-card>
           <v-card class="elevation-0">
             <!--标题-->
-            <div class="subheading py-3">SKU列表:</div>
+            <div class="subheading py-3">SKU:</div>
             <v-divider/>
             <!--SKU表格，hide-actions因此分页等工具条-->
             <v-data-table :items="skus" :headers="headers" hide-actions item-key="indexes" class="elevation-0">
@@ -124,7 +124,7 @@
         </v-flex>
         <!--提交按钮-->
         <v-flex xs3 offset-xs9>
-          <v-btn color="info" @click="submit">保存商品信息</v-btn>
+          <v-btn color="info" @click="submit">Store</v-btn>
         </v-flex>
       </v-stepper-content>
     </v-stepper-items>
@@ -225,7 +225,7 @@ export default {
           // 成功，关闭窗口
           this.$emit("close");
           // 提示成功
-          this.$message.success("保存成功了");
+          this.$message.success("store successfully!");
         })
         .catch(() => {
           this.$message.error("保存失败！");
@@ -370,13 +370,13 @@ export default {
         let value = k;
         if (k === "price") {
           // enable，表头要翻译成“价格”
-          k = "价格";
+          k = "price";
         } else if (k === "stock") {
           // enable，表头要翻译成“库存”
-          k = "库存";
+          k = "stock";
         } else if (k === "enable") {
           // enable，表头要翻译成“是否启用”
-          k = "是否启用";
+          k = "valid";
         } else if (k === "images" || k === 'indexes') {
           // 图片和索引不在表格中展示
           return;

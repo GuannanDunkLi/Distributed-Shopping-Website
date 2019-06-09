@@ -8,23 +8,43 @@ eureka:
     serviceUrl:
       defaultZone: http://127.0.0.1:10086/eureka
 zuul:
-  prefix: /api # 添加路由前缀
+  prefix: /api
   routes:
-    item-service: /item/** # 将商品微服务映射到/item/**
+    item-service: /item/**
     search-service: /search/**
     upload-service:
       path: /upload/**
       serviceId: upload-service
       strip-prefix: false
+    user-service: /user/**
+    auth-service: /auth/**
+    cart-service: /cart/**
+    order-service: /order-service/**
+  # These two are for reading cookies
+  add-host-header: true
+  sensitive-headers:
 ribbon:
-  ConnectTimeout: 1000 # 连接超时时间(ms)
-  ReadTimeout: 3500 # 读取超时时间(ms)
-  MaxAutoRetriesNextServer: 0 # 切换服务重试次数
-  MaxAutoRetries: 0 # 同一实例的重试次数
+  ConnectTimeout: 1000
+  ReadTimeout: 3500
+  MaxAutoRetriesNextServer: 0
+  MaxAutoRetries: 0
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMillisecond: 5000 # 熔断超时时长：5000ms
+            timeoutInMillisecond: 5000
+ly:
+  jwt:
+    pubKeyPath: D:/tmp/id_rsa.pub
+    cookieName: E_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /zuul/api/upload
+      - /api/item

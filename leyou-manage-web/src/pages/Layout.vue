@@ -14,10 +14,10 @@
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="../assets/2.jpeg">
+              <img src="../assets/avatar.jpg">
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>虎哥</v-list-tile-title>
+              <v-list-tile-title>Admin</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -65,7 +65,7 @@
       <!-- 切换黑暗主题 -->
       <v-flex xs1>
         <v-switch
-          :label="dark ? '暗黑' : '明亮'"
+          :label="dark ? 'dark' : 'light'"
           v-model="dark"
           color="dark"
           hide-details
@@ -109,7 +109,7 @@
         dark: false,// 是否暗黑主题
         drawer: true,// 左侧导航是否隐藏
         miniVariant: false,// 左侧导航是否收起
-        title: '乐优商城后台管理',// 顶部导航条名称,
+        title: 'Back-end Management',// 顶部导航条名称,
         menuMap: {}
       }
     },

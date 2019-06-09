@@ -8,12 +8,6 @@ import lombok.Data;
 import java.util.List;
 import java.util.Map;
 
-/*
- * 搜索结果类
- * @param: null
- * @return
- * @author dunklee
- */
 @Data
 public class SearchResult extends PageResult<Goods> {
     private List<Category> categories;

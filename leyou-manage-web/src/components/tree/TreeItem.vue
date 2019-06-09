@@ -135,7 +135,7 @@
       addChild: function () {
         let child = {
           id: 0,
-          name: '新的节点',
+          name: 'new node',
           parentId: this.model.id,
           isParent: false,
           sort:this.model.children? this.model.children.length + 1:1

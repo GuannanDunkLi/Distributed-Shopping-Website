@@ -5,9 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
-    <title>乐优商城--商品详情页</title>
-    <link rel="icon" href="/assets/img/favicon.ico">
-
+    <title>ecommerce--Goods Page</title>
     <link rel="stylesheet" type="text/css" href="/css/webbase.css"/>
     <link rel="stylesheet" type="text/css" href="/css/pages-item.css"/>
     <link rel="stylesheet" type="text/css" href="/css/pages-zoom.css"/>
@@ -142,38 +140,37 @@
                     <div class="news"><span th:utext="${subTitle}">Apple iPhone 6s 4GB 128GB 土豪金</span></div>
                     <div class="summary">
                         <div class="summary-wrap">
-                            <div class="fl title"><i>价　　格</i></div>
+                            <div class="fl title"><i><h5>Price</h5></i></div>
                             <div class="fl price">
-                                <i>¥</i><em v-text="ly.formatPrice(sku.price)"></em><span>降价通知</span>
+                                <i>¥</i><em v-text="ly.formatPrice(sku.price)"></em>
                             </div>
-                            <div class="fr remark"><i>累计评价</i><em>612188</em></div>
+                            <!--<div class="fr remark"><i>Comments</i><em>xxx</em></div>-->
                         </div>
                         <div class="summary-wrap">
                             <div class="fl title">
-                                <i>促　　销</i>
+                                <i><h5>Promotion</h5></i>
                             </div>
                             <div class="fl fix-width">
-                                <i class="red-bg">加价购</i>
-                                <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                                    购热销商品</em>
+                                <!--<i class="red-bg">加价购</i>-->
+                                <em class="t-gray">...promotion information</em>
                             </div>
                         </div>
                     </div>
                     <div class="support">
+                        <!--<div class="summary-wrap">-->
+                            <!--<div class="fl title">-->
+                                <!--<i>支　　持</i>-->
+                            <!--</div>-->
+                            <!--<div class="fl fix-width">-->
+                                <!--<em class="t-gray">以旧换新，闲置手机回收 4G套餐超值抢 礼品购</em>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="summary-wrap">
                             <div class="fl title">
-                                <i>支　　持</i>
+                                <i>Ship to</i>
                             </div>
                             <div class="fl fix-width">
-                                <em class="t-gray">以旧换新，闲置手机回收 4G套餐超值抢 礼品购</em>
-                            </div>
-                        </div>
-                        <div class="summary-wrap">
-                            <div class="fl title">
-                                <i>配 送 至</i>
-                            </div>
-                            <div class="fl fix-width">
-                                <em class="t-gray">上海 <span v-text="sku.stock > 0 ? '有货' : '缺货'"></span></em>
+                                <em class="t-gray">Melbourne</em>
                             </div>
                         </div>
                     </div>
@@ -187,7 +184,7 @@
                                 </dt>
                                 <dd v-for="(o,i) in options" :key="i" @click="selectSku(id,i)">
                                     <a href="javascript:;" :class="{selected:i === indexes[id], locked:locked(id, i)}">
-                                        {{o}}<span title="点击取消选择">&nbsp;</span>
+                                        {{o}}<span title="cancel">&nbsp;</span>
                                     </a>
                                 </dd>
                             </dl>
@@ -208,7 +205,7 @@
                                 <ul class="btn-choose unstyled">
                                     <li>
                                         <a href="#" @click.prevent="addCart" target="_blank"
-                                           class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                           class="sui-btn  btn-danger addshopcar">Add to Cart</a>
                                     </li>
                                 </ul>
                             </div>
@@ -222,27 +219,28 @@
                     <ul class="sui-nav nav-tabs tab-wraped">
                         <li class="active">
                             <a href="#index" data-toggle="tab">
-                                <span>相关分类</span>
+                                <span>Related</span>
                             </a>
                         </li>
                         <li>
                             <a href="#profile" data-toggle="tab">
-                                <span>推荐品牌</span>
+                                <span>Recommend</span>
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content tab-wraped">
                         <div id="index" class="tab-pane active">
-                            <ul class="part-list unstyled">
-                                <li>手机</li>
-                                <li>手机壳</li>
-                                <li>内存卡</li>
-                                <li>Iphone配件</li>
-                                <li>贴膜</li>
-                                <li>手机耳机</li>
-                                <li>移动电源</li>
-                                <li>平板电脑</li>
-                            </ul>
+                            <p>...related items</p>
+                            <!--<ul class="part-list unstyled">-->
+                                <!--<li>手机</li>-->
+                                <!--<li>手机壳</li>-->
+                                <!--<li>内存卡</li>-->
+                                <!--<li>Iphone配件</li>-->
+                                <!--<li>贴膜</li>-->
+                                <!--<li>手机耳机</li>-->
+                                <!--<li>移动电源</li>-->
+                                <!--<li>平板电脑</li>-->
+                            <!--</ul>-->
                             <ul class="goods-list unstyled">
                                 <li>
                                     <div class="list-wrap">
@@ -250,108 +248,129 @@
                                             <img src="/img/_/part01.png"/>
                                         </div>
                                         <div class="attr">
-                                            <em>Apple苹果iPhone 6s (A1699)</em>
+                                            <em>Related Goods</em>
                                         </div>
                                         <div class="price">
                                             <strong>
                                                 <em>¥</em>
-                                                <i>6088.00</i>
+                                                <i>xxxx</i>
                                             </strong>
                                         </div>
                                         <div class="operate">
-                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
+                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">Add to Cart</a>
                                         </div>
                                     </div>
                                 </li>
+                                <!--<li>-->
+                                    <!--<div class="list-wrap">-->
+                                        <!--<div class="p-img">-->
+                                            <!--<img src="/img/_/part02.png"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="attr">-->
+                                            <!--<em>Apple苹果iPhone 6s (A1699)</em>-->
+                                        <!--</div>-->
+                                        <!--<div class="price">-->
+                                            <!--<strong>-->
+                                                <!--<em>¥</em>-->
+                                                <!--<i>6088.00</i>-->
+                                            <!--</strong>-->
+                                        <!--</div>-->
+                                        <!--<div class="operate">-->
+                                            <!--<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="list-wrap">-->
+                                        <!--<div class="p-img">-->
+                                            <!--<img src="/img/_/part03.png"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="attr">-->
+                                            <!--<em>Apple苹果iPhone 6s (A1699)</em>-->
+                                        <!--</div>-->
+                                        <!--<div class="price">-->
+                                            <!--<strong>-->
+                                                <!--<em>¥</em>-->
+                                                <!--<i>6088.00</i>-->
+                                            <!--</strong>-->
+                                        <!--</div>-->
+                                        <!--<div class="operate">-->
+                                            <!--<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="list-wrap">-->
+                                        <!--<div class="p-img">-->
+                                            <!--<img src="/img/_/part02.png"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="attr">-->
+                                            <!--<em>Apple苹果iPhone 6s (A1699)</em>-->
+                                        <!--</div>-->
+                                        <!--<div class="price">-->
+                                            <!--<strong>-->
+                                                <!--<em>¥</em>-->
+                                                <!--<i>6088.00</i>-->
+                                            <!--</strong>-->
+                                        <!--</div>-->
+                                        <!--<div class="operate">-->
+                                            <!--<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="list-wrap">-->
+                                        <!--<div class="p-img">-->
+                                            <!--<img src="/img/_/part03.png"/>-->
+                                        <!--</div>-->
+                                        <!--<div class="attr">-->
+                                            <!--<em>Apple苹果iPhone 6s (A1699)</em>-->
+                                        <!--</div>-->
+                                        <!--<div class="price">-->
+                                            <!--<strong>-->
+                                                <!--<em>¥</em>-->
+                                                <!--<i>6088.00</i>-->
+                                            <!--</strong>-->
+                                        <!--</div>-->
+                                        <!--<div class="operate">-->
+                                            <!--<a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                        <div id="profile" class="tab-pane">
+                            <p>...recommend items</p>
+                            <ul class="goods-list unstyled">
                                 <li>
                                     <div class="list-wrap">
                                         <div class="p-img">
                                             <img src="/img/_/part02.png"/>
                                         </div>
                                         <div class="attr">
-                                            <em>Apple苹果iPhone 6s (A1699)</em>
+                                            <em>Recommend Goods</em>
                                         </div>
                                         <div class="price">
                                             <strong>
                                                 <em>¥</em>
-                                                <i>6088.00</i>
+                                                <i>xxxx</i>
                                             </strong>
                                         </div>
                                         <div class="operate">
-                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/img/_/part03.png"/>
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s (A1699)</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-                                                <em>¥</em>
-                                                <i>6088.00</i>
-                                            </strong>
-                                        </div>
-                                        <div class="operate">
-                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-                                        </div>
-                                    </div>
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/img/_/part02.png"/>
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s (A1699)</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-                                                <em>¥</em>
-                                                <i>6088.00</i>
-                                            </strong>
-                                        </div>
-                                        <div class="operate">
-                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
-                                        </div>
-                                    </div>
-                                    <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/img/_/part03.png"/>
-                                        </div>
-                                        <div class="attr">
-                                            <em>Apple苹果iPhone 6s (A1699)</em>
-                                        </div>
-                                        <div class="price">
-                                            <strong>
-                                                <em>¥</em>
-                                                <i>6088.00</i>
-                                            </strong>
-                                        </div>
-                                        <div class="operate">
-                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
+                                            <a href="javascript:void(0);" class="sui-btn btn-bordered">Add to Cart</a>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div id="profile" class="tab-pane">
-                            <p>推荐品牌</p>
-                        </div>
                     </div>
                 </div>
                 <div class="fr detail">
                     <div class="clearfix fitting">
-                        <h4 class="kt">选择搭配</h4>
+                        <h4 class="kt">Select to Match</h4>
                         <div class="good-suits">
                             <div class="fl master">
                                 <div class="list-wrap">
                                     <div class="p-img">
                                         <img src="/img/_/l-m01.png"/>
                                     </div>
-                                    <em>￥5299</em>
+                                    <em>￥xxxx</em>
                                     <i>+</i>
                                 </div>
                             </div>
@@ -361,39 +380,39 @@
                                         <div id="e">
                                             <img src="/img/_/dp01.png"/>
                                         </div>
-                                        <i>Feless费勒斯VR</i>
+                                        <i>Goods1</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>39</span>
+                                            <input type="checkbox"><span>xx</span>
                                         </label>
                                     </li>
                                     <li class="">
                                         <div id=""><img src="/img/_/dp02.png"/></div>
-                                        <i>Feless费勒斯VR</i>
+                                        <i>Goods2</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>50</span>
+                                            <input type="checkbox"><span>xx</span>
                                         </label>
                                     </li>
                                     <li class="">
                                         <div id=""><img src="/img/_/dp03.png"/></div>
-                                        <i>Feless费勒斯VR</i>
+                                        <i>Goods3</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>59</span>
+                                            <input type="checkbox"><span>xx</span>
                                         </label>
                                     </li>
                                     <li class="">
                                         <div id=""><img src="/img/_/dp04.png"/></div>
-                                        <i>Feless费勒斯VR</i>
+                                        <i>Goods4</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
-                                            <input type="checkbox"><span>99</span>
+                                            <input type="checkbox"><span>xx</span>
                                         </label>
                                     </li>
                                 </ul>
                             </div>
                             <div class="fr result">
-                                <div class="num">已选购0件商品</div>
-                                <div class="price-tit"><strong>套餐价</strong></div>
-                                <div class="price">￥5299</div>
-                                <button class="sui-btn  btn-danger addshopcar">加入购物车</button>
+                                <!--<div class="num">已选购0件商品</div>-->
+                                <div class="price-tit"><strong>Discount Price</strong></div>
+                                <div class="price">￥xxxx</div>
+                                <button class="sui-btn  btn-danger addshopcar">AddToCart</button>
                             </div>
                         </div>
                     </div>
@@ -401,49 +420,49 @@
                         <ul class="sui-nav nav-tabs tab-wraped">
                             <li class="active">
                                 <a href="#one" data-toggle="tab">
-                                    <span>商品介绍</span>
+                                    <span>Introduce</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#two" data-toggle="tab">
-                                    <span>规格与包装</span>
+                                    <span>Specification</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#three" data-toggle="tab">
-                                    <span>售后保障</span>
+                                    <span>AfterService</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#four" data-toggle="tab">
-                                    <span>商品评价</span>
+                                    <span>Comments</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#five" data-toggle="tab">
-                                    <span>手机社区</span>
+                                    <span>Community</span>
                                 </a>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
-                                <ul class="goods-intro-list unstyled" style="list-style: none;">
-                                    <li>分辨率：1920*1080(FHD)</li>
-                                    <li>后置摄像头：1200万像素</li>
-                                    <li>前置摄像头：500万像素</li>
-                                    <li>核 数：其他</li>
-                                    <li>频 率：以官网信息为准</li>
-                                    <li>品牌： Apple</li>
-                                    <li>商品名称：APPLEiPhone 6s Plus</li>
-                                    <li>商品编号：1861098</li>
-                                    <li>商品毛重：0.51kg</li>
-                                    <li>商品产地：中国大陆</li>
-                                    <li>热点：指纹识别，Apple Pay，金属机身，拍照神器</li>
-                                    <li>系统：苹果（IOS）</li>
-                                    <li>像素：1000-1600万</li>
-                                    <li>机身内存：64GB</li>
-                                </ul>
+                                <!--<ul class="goods-intro-list unstyled" style="list-style: none;">-->
+                                    <!--<li>分辨率：1920*1080(FHD)</li>-->
+                                    <!--<li>后置摄像头：1200万像素</li>-->
+                                    <!--<li>前置摄像头：500万像素</li>-->
+                                    <!--<li>核 数：其他</li>-->
+                                    <!--<li>频 率：以官网信息为准</li>-->
+                                    <!--<li>品牌： Apple</li>-->
+                                    <!--<li>商品名称：APPLEiPhone 6s Plus</li>-->
+                                    <!--<li>商品编号：1861098</li>-->
+                                    <!--<li>商品毛重：0.51kg</li>-->
+                                    <!--<li>商品产地：中国大陆</li>-->
+                                    <!--<li>热点：指纹识别，Apple Pay，金属机身，拍照神器</li>-->
+                                    <!--<li>系统：苹果（IOS）</li>-->
+                                    <!--<li>像素：1000-1600万</li>-->
+                                    <!--<li>机身内存：64GB</li>-->
+                                <!--</ul>-->
                                 <!--商品详情-->
                                 <div class="intro-detail">
                                     <div th:utext="${detail.description}"></div>
@@ -461,7 +480,7 @@
                                     </div>
                                 </div>
                                 <div class="package-list">
-                                    <h3>包装清单</h3>
+                                    <h3>PackingList</h3>
                                     <p th:text="${detail.packingList}">手机X1、快速指南X1、华为SuperCharge 充电器X1、三包凭证X1、Type-C
                                         数字耳机X1、Type-C 数据线X1、取卡针X1、TPU保护壳X1、USB Type-C转3.5mm耳机转接线X1（备注：最终以实物为准）</p>
                                 </div>
@@ -471,10 +490,10 @@
                                 <p th:text="${detail.afterService}">售后保障</p>
                             </div>
                             <div id="four" class="tab-pane">
-                                <p>商品评价</p>
+                                <p>...comments</p>
                             </div>
                             <div id="five" class="tab-pane">
-                                <p>手机社区</p>
+                                <p>...community</p>
                             </div>
                         </div>
                     </div>
@@ -483,7 +502,7 @@
             <!--like-->
             <div class="clearfix"></div>
             <div class="like">
-                <h4 class="kt">猜你喜欢</h4>
+                <h4 class="kt">GuessYouLike</h4>
                 <div class="like-list">
                     <ul class="yui3-g">
                         <li class="yui3-u-1-6">
@@ -492,16 +511,16 @@
                                     <img src="/img/_/itemlike01.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    <em>Goods1</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>3699.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有6人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>
@@ -511,16 +530,16 @@
                                     <img src="/img/_/itemlike02.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
+                                    <em>Goods2</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>4388.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有700人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>
@@ -530,16 +549,16 @@
                                     <img src="/img/_/itemlike03.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    <em>Goods3</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>4088.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有700人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>
@@ -549,16 +568,16 @@
                                     <img src="/img/_/itemlike04.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    <em>Goods4</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>4088.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有700人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>
@@ -568,16 +587,16 @@
                                     <img src="/img/_/itemlike05.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    <em>Goods5</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>4088.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有700人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>
@@ -587,16 +606,16 @@
                                     <img src="/img/_/itemlike06.png"/>
                                 </div>
                                 <div class="attr">
-                                    <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    <em>Goods6</em>
                                 </div>
                                 <div class="price">
                                     <strong>
                                         <em>¥</em>
-                                        <i>4088.00</i>
+                                        <i>xxxx</i>
                                     </strong>
                                 </div>
                                 <div class="commit">
-                                    <i class="command">已有700人评价</i>
+                                    <i class="command">xx comments</i>
                                 </div>
                             </div>
                         </li>

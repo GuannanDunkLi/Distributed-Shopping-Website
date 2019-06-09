@@ -1,0 +1,16 @@
+package com.ecommerce.order.config;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Data
+@Primary
+// 不加Component注释ConfigurationProperties会报错
+@Component
+@ConfigurationProperties(prefix = "ly.worker")
+public class IdWorkerProperties {
+    private long workerId;// 当前机器id
+    private long dataCenterId;// 序列号
+}

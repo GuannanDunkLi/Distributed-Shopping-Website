@@ -1,0 +1,19 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: cart-service
+  redis:
+    host: 54.252.187.62
+    password: 135792468as.redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+ly:
+  jwt:
+    pubKeyPath: D:/tmp/id_rsa.pub # 公钥地址
+    cookieName: E_TOKEN

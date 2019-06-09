@@ -23,7 +23,7 @@ public class CategoryController {
     }
 
     /*
-     * 根据分类id列表查询分类列表
+     * Query the category list according to the category id list
      * @param: ids
      * @return ResponseEntity<List<Category>>
      * @author dunklee
@@ -32,5 +32,10 @@ public class CategoryController {
     @GetMapping("list/ids")
     public ResponseEntity<List<Category>> queryCategoryByIds(@RequestParam("ids") List<Long> ids){
         return ResponseEntity.ok(categoryService.queryByIds(ids));
+    }
+
+    @GetMapping("childLists")
+    public ResponseEntity<List<Category>> queryChildCategoryListsByIds(@RequestParam("id") Long id){
+        return ResponseEntity.ok(categoryService.queryChildCategoryListsById(id));
     }
 }

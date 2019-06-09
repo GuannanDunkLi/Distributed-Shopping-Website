@@ -16,16 +16,16 @@ public class Goods {
     @Id
     private Long id; // spuId
     @Field(type = FieldType.Text, analyzer = "ik_max_word")
-    private String all; // 所有需要被搜索的信息，包含标题，分类，甚至品牌（唯一搜索字段）
+    private String all; // All the information that needs to be searched, including title, category, and even brand (unique search field)
     @Field(type = FieldType.Keyword, index = false)
-    private String subTitle;// 子标题
-    private Long brandId;// 品牌id
-    private Long cid1;// 1级分类id
-    private Long cid2;// 2级分类id
-    private Long cid3;// 3级分类id
-    private Date createTime;// 创建时间
-    private Set<Long> price;// 价格
+    private String subTitle;
+    private Long brandId;
+    private Long cid1;
+    private Long cid2;
+    private Long cid3;
+    private Date createTime;
+    private Set<Long> price;
     @Field(type = FieldType.Keyword, index = false)
-    private String skus;// sku信息的json结构
-    private Map<String, Object> specs;// 可搜索的规格参数，key是参数名，值是参数值
+    private String skus;
+    private Map<String, Object> specs;
 }

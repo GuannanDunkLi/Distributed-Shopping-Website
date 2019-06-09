@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BrandApi {
     /*
-     * 根据商品品牌id查询品牌
+     * Query the brand according to the product brand id
      * @param: id
      * @return ResponseEntity<Brand>
      * @author dunklee
@@ -19,7 +19,7 @@ public interface BrandApi {
     Brand queryBrandById(@PathVariable("id") Long id);
 
     /*
-     * 根据商品品牌id列表查询品牌
+     * Query the brand according to the product brand id list
      * @param: ids
      * @return ResponseEntity<List<Brand>>
      * @author dunklee

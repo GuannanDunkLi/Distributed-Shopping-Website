@@ -8,11 +8,10 @@ import java.util.List;
 
 public interface CategoryApi {
     /*
-     * 根据分类id列表查询分类列表
+     * Query the category list according to the category id list
      * @param: ids
      * @return ResponseEntity<List<Category>>
      * @author dunklee
-     * @date 2019/4/9
      */
     @GetMapping("category/list/ids")
     List<Category> queryCategoryByIds(@RequestParam("ids") List<Long> ids);

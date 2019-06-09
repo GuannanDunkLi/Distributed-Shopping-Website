@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface SpecificationApi {
     /*
-     * 查询规格参数集合
+     * Query specification parameter set
      * @param: gid
      * @param: cid
      * @param: searching
@@ -23,7 +23,7 @@ public interface SpecificationApi {
             @RequestParam(value = "searching", required = false) Boolean searching);
 
     /*
-     * 根据分类cid3查询规格参数详细信息
+     * Query specification parameter details according to category cid3
      * @param: cid
      * @return java.util.List<com.ecommerce.item.pojo.SpecGroup>
      * @author dunklee

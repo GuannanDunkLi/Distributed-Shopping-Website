@@ -16,9 +16,9 @@ public class PageController {
 
     @GetMapping("item/{id}.html")
     public String toItemPage(@PathVariable("id") Long spuId, Model model) {
-        // 加载所需的数据
+        // Load the required data
         Map<String, Object> modelMap = pageService.loadModel(spuId);
-        // 放入模型
+        // Put into the model
         model.addAllAttributes(modelMap);
         return "item";
     }

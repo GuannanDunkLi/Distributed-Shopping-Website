@@ -1,49 +1,49 @@
 var menus = [
   {
     action: "home",
-    title: "首页",
+    title: "Home",
     path:"/index",
-    items: [{ title: "统计", path: "/dashboard" }]
+    items: [{ title: "statistics", path: "/dashboard" }]
   },
   {
     action: "apps",
-    title: "商品管理",
+    title: "GoodsManagement",
     path:"/item",
     items: [
-      { title: "分类管理", path: "/category" },
-      { title: "品牌管理", path: "/brand" },
-      { title: "商品列表", path: "/list" },
-      { title: "规格参数", path: "/specification" }
+      { title: "Category", path: "/category" },
+      { title: "Brand", path: "/brand" },
+      { title: "GoodsList", path: "/list" },
+      { title: "Specification", path: "/specification" }
     ]
   },
   {
     action: "people",
-    title: "会员管理",
+    title: "MemberManagement",
     path:"/user",
     items: [
-      { title: "会员统计", path: "/statistics" },
-      { title: "会员管理", path: "/list" }
+      { title: "Statistics", path: "/statistics" },
+      { title: "List", path: "/list" }
     ]
   },
   {
     action: "attach_money",
-    title: "销售管理",
+    title: "SalesManagement",
     path:"/trade",
     items: [
-      { title: "交易统计", path: "/statistics" },
-      { title: "订单管理", path: "/order" },
-      { title: "物流管理", path: "/logistics" },
-      { title: "促销管理", path: "/promotion" }
+      { title: "Statistics", path: "/statistics" },
+      { title: "Order", path: "/order" },
+      { title: "Logistics", path: "/logistics" },
+      { title: "Promotion", path: "/promotion" }
     ]
   },
   {
     action: "settings",
-    title: "权限管理",
+    title: "AuthorityManagement",
     path:"/authority",
     items: [
-      { title: "权限管理", path: "/list" },
-      { title: "角色管理", path: "/role" },
-      { title: "人员管理", path: "/member" }
+      { title: "List", path: "/list" },
+      { title: "Role", path: "/role" },
+      { title: "Member", path: "/member" }
     ]
   }
 ]

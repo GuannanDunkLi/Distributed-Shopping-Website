@@ -3,11 +3,11 @@ package com.ecommerce.search.pojo;
 import java.util.Map;
 
 public class SearchRequest {
-    private String key; // 搜索条件
-    private Integer page; // 当前页
-    private Map<String, String> filter; // 过滤项
-    private static final Integer DEFAULT_PAGE = 1; // 默认页
-    private static final Integer DEFAULT_SIZE = 20; // 每页大小，不从页面接收，而是固定大小
+    private String key; // search key
+    private Integer page; // current page
+    private Map<String, String> filter;
+    private static final Integer DEFAULT_PAGE = 1;
+    private static final Integer DEFAULT_SIZE = 20;
 
     public String getKey() {
         return key;
@@ -21,7 +21,6 @@ public class SearchRequest {
         if (page == null) {
             return DEFAULT_PAGE;
         }
-        // 获取页码时做一些校验，不能小于1
         return Math.max(DEFAULT_PAGE, page);
     }
 

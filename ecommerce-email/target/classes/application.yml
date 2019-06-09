@@ -1,0 +1,27 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: email-service
+  rabbitmq:
+    host: 54.252.187.62
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+  redis:
+    host: 54.252.187.62
+    password: 135792468as.redis
+  mail:
+    host: smtp.gmail.com
+    username: guannanli.testing@gmail.com
+    password: 135792468as #Gmail账号密码
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    from: guannanli.testing@gmail.com
+    default-encoding: utf-8
+    registerSubject: "verification code"
+    content: "your verification code is : "

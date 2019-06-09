@@ -25,7 +25,7 @@
             </template>
         </v-data-table>
         
-        <v-btn color='primary' @click="addGroup">新增分组</v-btn>
+        <v-btn color='primary' @click="addGroup">Add a new SpecGroup</v-btn>
         <v-dialog v-model="show" width="300" height="200">
         <v-card >
             <v-card-text>
@@ -55,8 +55,8 @@ export default {
       groups:[],
       headers: [
         { text: "id", value: "id", align: "center", sortable: false },
-        { text: "组名", value: "name", align: "center", sortable: false },
-        { text: "操作", align: "center", sortable: false }
+        { text: "groupName", value: "name", align: "center", sortable: false },
+        { text: "operation", align: "center", sortable: false }
       ],
       show: false, // 是否打开编辑窗口
       group:{name:''},

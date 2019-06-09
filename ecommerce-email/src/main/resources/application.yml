@@ -1,0 +1,27 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: email-service
+  rabbitmq:
+    host:
+    username:
+    password:
+    virtual-host:
+  redis:
+    host:
+    password:
+  mail:
+    host:
+    username:
+    password:  #Gmail账号密码
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    from:
+    default-encoding: utf-8
+    registerSubject: "verification code"
+    content: "your verification code is : "

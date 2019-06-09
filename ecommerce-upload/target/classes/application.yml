@@ -21,7 +21,7 @@ fdfs:
     width: 60
     height: 60
   tracker-list: # tracker地址
-    - 192.168.1.128:22122
+    - 54.252.187.62:22122
 ecommerce:
   upload:
     baseUrl: http://image.leyou.com/

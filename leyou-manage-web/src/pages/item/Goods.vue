@@ -1,26 +1,26 @@
 <template>
   <v-card>
     <v-toolbar class="elevation-0">
-      <v-btn color="primary" @click="addGoods">新增商品</v-btn>
+      <v-btn color="primary" @click="addGoods">Add Goods</v-btn>
       <v-spacer/>
       <v-flex xs3>
-        状态：
+        state：
         <v-btn-toggle mandatory v-model.lazy="filter.saleable">
           <v-btn flat>
-            全部
+            all
           </v-btn>
           <v-btn flat :value="true">
-            上架
+            On Sale
           </v-btn>
           <v-btn flat :value="false">
-            下架
+            Off Sale
           </v-btn>
         </v-btn-toggle>
       </v-flex>
       <v-flex xs3>
         <v-text-field
           append-icon="search"
-          label="搜索"
+          label="search"
           single-line
           hide-details
           v-model="filter.search"
@@ -48,8 +48,8 @@
           <v-btn icon>
             <i class="el-icon-delete"/>
           </v-btn>
-          <v-btn icon v-if="props.item.saleable">下架</v-btn>
-          <v-btn icon v-else>上架</v-btn>
+          <!--<v-btn icon v-if="props.item.saleable">Off Sale</v-btn>-->
+          <!--<v-btn icon v-else>On sale</v-btn>-->
         </td>
       </template>
     </v-data-table>
@@ -58,7 +58,7 @@
       <v-card>
         <!--对话框的标题-->
         <v-toolbar dense dark color="primary">
-          <v-toolbar-title>{{isEdit ? '修改' : '新增'}}商品</v-toolbar-title>
+          <v-toolbar-title>{{isEdit ? 'Edit' : 'Add'}} Goods</v-toolbar-title>
           <v-spacer/>
           <!--关闭窗口的按钮-->
           <v-btn icon @click="closeWindow">
@@ -72,8 +72,8 @@
         <!--底部按钮，用来操作步骤线-->
         <v-card-actions class="elevation-10">
           <v-flex class="xs3 mx-auto">
-            <v-btn @click="previous" color="primary" :disabled="step === 1">上一步</v-btn>
-            <v-btn @click="next" color="primary" :disabled="step === 4">下一步</v-btn>
+            <v-btn @click="previous" color="primary" :disabled="step === 1">Last</v-btn>
+            <v-btn @click="next" color="primary" :disabled="step === 4">Next</v-btn>
           </v-flex>
         </v-card-actions>
       </v-card>
@@ -99,10 +99,10 @@
         pagination: {}, // 分页信息
         headers: [
           {text: 'id', align: 'center', sortable: false, value: 'id'},
-          {text: '标题', align: 'center', sortable: false, value: 'title'},
-          {text: '商品分类', align: 'center', sortable: false, value: 'cname'},
-          {text: '品牌', align: 'center', value: 'bname', sortable: false,},
-          {text: '操作', align: 'center', sortable: false}
+          {text: 'title', align: 'center', sortable: false, value: 'title'},
+          {text: 'category', align: 'center', sortable: false, value: 'cname'},
+          {text: 'brand', align: 'center', value: 'bname', sortable: false,},
+          {text: 'operation', align: 'center', sortable: false}
         ],
         show: false,// 控制对话框的显示
         oldGoods: {}, // 即将被编辑的商品信息

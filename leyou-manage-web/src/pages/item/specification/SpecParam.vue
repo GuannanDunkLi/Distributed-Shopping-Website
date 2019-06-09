@@ -10,7 +10,7 @@
                 <td class="text-xs-center">{{ props.item.id }}</td>
                 <td class="text-xs-center">{{ props.item.name }}</td>
                 <td class="text-xs-center">{{ formatBoolean(props.item.numeric) }}</td>
-                <td class="text-xs-center">{{ props.item.unit || '无' }}</td>
+                <td class="text-xs-center">{{ props.item.unit || 'None' }}</td>
                 <td class="text-xs-center">{{ formatBoolean(props.item.generic) }}</td>
                 <td class="text-xs-center">{{ formatBoolean(props.item.searching) }}</td>
                 <td class="justify-center layout px-0">
@@ -26,7 +26,7 @@
                 该分组下没有参数
                 </template>
             </v-data-table>
-            <v-btn color='primary' @click="addParam">新增参数</v-btn>
+            <v-btn color='primary' @click="addParam">Add a new SpecParam</v-btn>
             <v-dialog v-model="show" max-width="350px" scrollable>
             <v-card>
                 <v-card-text style="height: 300px;">
@@ -85,25 +85,25 @@ export default {
     return {
       headers: [
         { text: "id", value: "id", align: "center", sortable: false },
-        { text: "参数名", value: "name", align: "center", sortable: false },
-        { text: "是否为数值", value: "numeric",
+        { text: "paramName", value: "name", align: "center", sortable: false },
+        { text: "isNumeric", value: "numeric",
           align: "center",
           sortable: false
         },
-        { text: "单位", value: "unit", align: "center", sortable: false },
+        { text: "unit", value: "unit", align: "center", sortable: false },
         {
-          text: "是否通用",
+          text: "isGeneric",
           value: "generic",
           align: "center",
           sortable: false
         },
         {
-          text: "是否可搜索",
+          text: "isSearch",
           value: "searching",
           align: "center",
           sortable: false
         },
-        { text: "操作", align: "center", sortable: false }
+        { text: "operate", align: "center", sortable: false }
       ],
       params: [], // 参数
       show: false,
@@ -163,7 +163,7 @@ export default {
         })
     },
     formatBoolean(boo) {
-      return boo ? "是" : "否";
+      return boo ? "Yes" : "No";
     },
     save(){
         const p = {};

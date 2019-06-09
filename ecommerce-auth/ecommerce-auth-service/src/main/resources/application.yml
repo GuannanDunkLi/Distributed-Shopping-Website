@@ -1,0 +1,20 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: auth-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+ly:
+  jwt:
+    secret: ly@Login(Auth}*^31)&yun6%f3q2 # ciper text
+    pubKeyPath: D:/tmp/id_rsa.pub
+    priKeyPath: D:/tmp/id_rsa.pri
+    expire: 30 # minutes
+    cookieName: E_TOKEN

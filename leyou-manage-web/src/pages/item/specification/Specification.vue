@@ -4,7 +4,7 @@
         <!-- 商品分类 -->
         <v-flex xs3>
           <v-card>
-            <v-card-title>选择分类，查看规格参数模板：</v-card-title>
+            <v-card-title>Select a category to view the specification：</v-card-title>
             <v-divider/>
               <v-tree url="/item/category/list"
                   :isEdit="false"

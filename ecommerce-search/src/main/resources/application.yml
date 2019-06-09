@@ -6,9 +6,14 @@ spring:
   data:
     elasticsearch:
       cluster-name: elasticsearch
-      cluster-nodes: 192.168.1.128:9300
+      cluster-nodes:
   jackson:
     default-property-inclusion: non_null
+  rabbitmq:
+    host:
+    username:
+    password:
+    virtual-host:
 eureka:
   client:
     service-url:

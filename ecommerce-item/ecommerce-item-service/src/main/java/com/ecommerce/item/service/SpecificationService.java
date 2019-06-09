@@ -45,20 +45,22 @@ public class SpecificationService {
     }
 
     public List<SpecGroup> queryAllByCid(Long cid) {
-        // 查询规格组
+        // Query specGroups
         List<SpecGroup> specGroups = queryGroupByCid(cid);
-        // 查询当前分类下的参数
+        // Query the parameters under the current category
         List<SpecParam> specParams = queryParamList(null, cid, null);
-        // 先把规格参数变成map，map的key是规格组的id，map的值是组下规格参数
+        // First change the specification parameter to map,
+        // the key of map is the id of the specification group,
+        // and the value of map is the specification parameter of the group.
         Map<Long, List<SpecParam>> params = new HashMap<>();
         for (SpecParam specParam : specParams) {
             if (!params.containsKey(specParam.getGroupId())) {
-                // 这个组id在params中不存在，新增一个list
+                // This group id does not exist in params, add a list
                 params.put(specParam.getGroupId(), new ArrayList<>());
             }
             params.get(specParam.getGroupId()).add(specParam);
         }
-        // 填充specParams到specGroup中去
+        // Fill the specParams to the specGroup
         for (SpecGroup specGroup : specGroups) {
             specGroup.setParams(params.get(specGroup.getId()));
         }

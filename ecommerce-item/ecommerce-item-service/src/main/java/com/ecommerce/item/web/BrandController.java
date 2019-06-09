@@ -16,14 +16,13 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
-    // 新增品牌
+    // Add new Brand
     @PostMapping
     public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam("cids") List<Long> cids) {
         this.brandService.saveBrand(brand, cids);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    // 品牌分页查询
     @GetMapping("page")
     public ResponseEntity<PageResult<Brand>> queryBrandByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -44,7 +43,7 @@ public class BrandController {
     }
 
     /*
-     * 根据商品品牌id查询品牌
+     * Query the brand according to the product brand id
      * @param: id
      * @return ResponseEntity<Brand>
      * @author dunklee
@@ -55,7 +54,7 @@ public class BrandController {
     }
 
     /*
-     * 根据商品品牌id列表查询品牌
+     * Query the brand according to the product brand id list
      * @param: ids
      * @return ResponseEntity<List<Brand>>
      * @author dunklee

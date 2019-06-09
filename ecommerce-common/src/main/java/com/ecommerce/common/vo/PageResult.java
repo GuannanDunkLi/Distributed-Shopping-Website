@@ -6,9 +6,9 @@ import java.util.List;
 
 @Data
 public class PageResult<T> {
-    private Long total; // 总条数
-    private Integer totalPage; // 总页数
-    private List<T> items; // 当前页数据
+    private Long total;
+    private Integer totalPage;
+    private List<T> items; // data in current page
 
     public PageResult() {
     }

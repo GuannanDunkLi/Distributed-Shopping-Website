@@ -11,11 +11,18 @@ zuul:
   prefix: /api # 添加路由前缀
   routes:
     item-service: /item/** # 将商品微服务映射到/item/**
-    search-service: /search/**
+    search-service: /search/** # 搜索微服务
     upload-service:
       path: /upload/**
       serviceId: upload-service
       strip-prefix: false
+    user-service: /user/** # 用户微服务
+    auth-service: /auth/** # 授权中心微服务
+    cart-service: /cart/**
+    order-service: /order-service/**
+  # 这两个是为了读取到cookie
+  add-host-header: true # 添加host头信息
+  sensitive-headers:
 ribbon:
   ConnectTimeout: 1000 # 连接超时时间(ms)
   ReadTimeout: 3500 # 读取超时时间(ms)
@@ -28,3 +35,16 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 5000 # 熔断超时时长：5000ms
+ly:
+  jwt:
+    pubKeyPath: D:/tmp/id_rsa.pub # 公钥地址
+    cookieName: E_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /zuul/api/upload
+      - /api/item

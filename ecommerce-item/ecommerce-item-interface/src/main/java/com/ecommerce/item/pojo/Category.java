@@ -5,6 +5,8 @@ import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.List;
 
 @Data
 @Table(name="tb_category")
@@ -14,6 +16,8 @@ public class Category {
     private Long id;
     private String name;
     private Long parentId;
-    private Boolean isParent; // 注意isParent生成的getter和setter方法需要手动加上Is
+    private Boolean isParent;
     private Integer sort;
+    @Transient
+    private List<Category> childCates;
 }

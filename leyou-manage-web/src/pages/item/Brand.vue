@@ -1,11 +1,11 @@
 <template>
   <v-card>
     <v-card-title>
-      <v-btn color="primary" @click="addBrand">新增品牌</v-btn>
+      <v-btn color="primary" @click="addBrand">Add a new brand</v-btn>
       <!--搜索框，与search属性关联-->
       <v-spacer/>
       <v-flex xs3>
-        <v-text-field label="输入关键字搜索" v-model.lazy="search" append-icon="search" hide-details/>
+        <v-text-field label="saerch" v-model.lazy="search" append-icon="search" hide-details/>
       </v-flex>
     </v-card-title>
     <v-divider/>
@@ -70,11 +70,11 @@
         loading: false, // 是否在加载中
         pagination: {}, // 分页信息
         headers: [
-          {text: '品牌id', align: 'center', sortable: true, value: 'id'},
-          {text: '品牌名称', align: 'center', sortable: false, value: 'name'},
-          {text: '品牌LOGO', align: 'center', sortable: false, value: 'image'},
-          {text: '品牌首字母', align: 'center', value: 'letter', sortable: true},
-          {text: '操作', align: 'center', value: 'id', sortable: false}
+          {text: 'id', align: 'center', sortable: true, value: 'id'},
+          {text: 'name', align: 'center', sortable: false, value: 'name'},
+          {text: 'LOGO', align: 'center', sortable: false, value: 'image'},
+          {text: 'firstLetter', align: 'center', value: 'letter', sortable: true},
+          {text: 'operation', align: 'center', value: 'id', sortable: false}
         ],
         show: false,// 控制对话框的显示
         oldBrand: {}, // 即将被编辑的品牌数据

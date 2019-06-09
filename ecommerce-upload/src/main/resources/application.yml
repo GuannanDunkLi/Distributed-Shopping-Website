@@ -5,7 +5,7 @@ spring:
     name: upload-service
   servlet:
     multipart:
-      max-file-size: 5MB # 限制文件上传的大小
+      max-file-size: 5MB
 # Eureka
 eureka:
   client:
@@ -17,11 +17,11 @@ eureka:
 fdfs:
   so-timeout: 2500
   connect-timeout: 600
-  thumb-image: # 缩略图
+  thumb-image:
     width: 60
     height: 60
-  tracker-list: # tracker地址
-    - 192.168.1.128:22122
+  tracker-list: # address of the tracker
+    -
 ecommerce:
   upload:
     baseUrl: http://image.leyou.com/

@@ -32,4 +32,17 @@ public class CategoryService {
         }
         return list;
     }
+
+    public List<Category> queryChildCategoryListsById(Long id) {
+        Category c = new Category();
+        c.setParentId(id);
+        List<Category> list = categoryMapper.select(c);
+        for (Category category : list) {
+            Category c1 = new Category();
+            c1.setParentId(category.getId());
+            List<Category> childCates = categoryMapper.select(c1);
+            category.setChildCates(childCates);
+        }
+        return list;
+    }
 }

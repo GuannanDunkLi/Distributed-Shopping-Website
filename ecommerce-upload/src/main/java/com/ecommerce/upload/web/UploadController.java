@@ -17,15 +17,12 @@ public class UploadController {
     @Autowired
     private UploadService uploadService;
 
-    // 上传图片功能
     @PostMapping("image")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
         String url = this.uploadService.upload(file);
-        // 如果url为空，证明上传失败
         if (StringUtils.isBlank(url)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        // 返回200，并且携带url路径
         return ResponseEntity.ok(url);
     }
 }

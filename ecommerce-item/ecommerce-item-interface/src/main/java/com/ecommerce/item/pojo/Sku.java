@@ -16,14 +16,14 @@ public class Sku {
     private Long id;
     private Long spuId;
     private String title;
-    private String images; // 多张图片会以逗号隔开
+    private String images; // Multiple images will be separated by commas
     private Long price;
-    private String ownSpec; // 商品特殊规格的键值对
-    private String indexes; // 商品特殊规格的下标
-    private Boolean enable; // 是否有效，逻辑删除用
-    private Date createTime; // 创建时间
-    private Date lastUpdateTime; // 最后修改时间
+    private String ownSpec; // Key-value pairs for special specifications
+    private String indexes; // Indexes of special specifications of goods
+    private Boolean enable;
+    private Date createTime;
+    private Date lastUpdateTime;
 
     @Transient
-    private int stock; // 库存
+    private int stock;
 }

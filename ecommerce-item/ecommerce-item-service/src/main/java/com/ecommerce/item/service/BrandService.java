@@ -22,37 +22,36 @@ public class BrandService {
     private BrandMapper brandMapper;
 
     public PageResult<Brand> queryBrandByPageAndSort(Integer page, Integer rows, String sortBy, Boolean desc, String key) {
-        // 开始分页
         PageHelper.startPage(page, rows);
-        // 过滤
+        // Filtering
         Example example = new Example(Brand.class);
         if (StringUtils.isNotBlank(key)) {
             example.createCriteria().orLike("name", "%" + key + "%").orEqualTo("letter", key.toUpperCase());
         }
-        // 排序
+        // Sorting
         if (StringUtils.isNotBlank(sortBy)) {
             String orderByClause = sortBy + (desc ? " DESC" : " ASC");
             example.setOrderByClause(orderByClause);
         }
-        // 查询
+        // Querying
         List<Brand> list = brandMapper.selectByExample(example);
         if (CollectionUtils.isEmpty(list)) {
             throw new EException(ExceptionEnum.BRAND_NOT_FOUND);
         }
-        // 解析并返回结果
+        // Parse and return results
         PageInfo<Brand> pageInfo = new PageInfo<>(list);
         return new PageResult<>(pageInfo.getTotal(), list);
     }
 
     @Transactional
     public void saveBrand(Brand brand, List<Long> cids) {
-        // 新增品牌
-        brand.setId(null); // 因为id是自增
+        // Add brand
+        brand.setId(null);
         int count = brandMapper.insert(brand);
         if (count != 1){
             throw new EException(ExceptionEnum.BRAND_SAVE_ERROR);
         }
-        // 中间表新增记录
+        // New record in the middle table
         for (Long cid : cids) {
             count = brandMapper.insertCategoryBrand(cid, brand.getId());
             if (count != 1){

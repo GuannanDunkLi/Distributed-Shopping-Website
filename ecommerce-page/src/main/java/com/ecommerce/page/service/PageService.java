@@ -55,20 +55,25 @@ public class PageService {
     }
 
     public void createHtml(Long spuId) {
-        // 上下文
         Context context = new Context();
         context.setVariables(loadModel(spuId));
 
-        // 输出流
         File file = new File("D:\\ecommerce\\staticPage", spuId + ".html");
-        //如果页面存在，先删除，后进行创建静态页
         if (file.exists()) {
             file.delete();
         }
         try (PrintWriter writer = new PrintWriter(file, "utf-8")) {
             templateEngine.process("item", context, writer);
         } catch (Exception e) {
-            log.error("【静态页服务】生成静态页面异常", e);
+            log.error("【Page service】error", e);
+        }
+    }
+
+    public void deleteHtml(Long spuId) {
+        File file = new File("D:\\ecommerce\\staticPage", spuId + ".html");
+
+        if (file.exists()) {
+            file.delete();
         }
     }
 }

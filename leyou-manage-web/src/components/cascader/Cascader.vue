@@ -148,7 +148,7 @@
         this.options = data;
       })
       if(this.required){
-        this.defaultRules.push(v => v.length > 0 || this.label + "不能为空");
+        this.defaultRules.push(v => v.length > 0 || this.label + "cant be null");
       }
       if(this.rules){
         this.rules.forEach(r => this.defaultRules.push(r));

@@ -29,29 +29,28 @@ public class UploadService {
 
     public String upload(MultipartFile file) {
         try {
-            // 1、图片信息校验
-            // 1)校验文件类型
+            // 1、check image information
+            // 1) Check file type
             String type = file.getContentType();
             if (!uploadProperties.getAllowTypes().contains(type)) {
                 logger.info("上传失败，文件类型不匹配：{}", type);
                 throw new EException(ExceptionEnum.INVALID_FILE_TYPE);
             }
-            // 2)校验图片内容
+            // 2) Check content of image
             BufferedImage image = ImageIO.read(file.getInputStream());
             if (image == null) {
                 logger.info("上传失败，文件内容不符合要求");
                 throw new EException(ExceptionEnum.INVALID_FILE_TYPE);
             }
-            // 2、保存图片
-            // 2.1 上传到FDS
+            // 2、store image
+            // 2.1 upload to FDFS
             String extension = StringUtils.substringAfterLast(file.getOriginalFilename(), ".");
             StorePath storePath = storageClient.uploadFile(file.getInputStream(), file.getSize(), extension, null);
-            // 2.2、拼接图片地址
+            // 2.2、 url
             String url = uploadProperties.getBaseUrl() + storePath.getFullPath();
-            // 2.3、返回路径
             return url;
         } catch (Exception e) {
-            logger.error("上传文件失败!", e);
+            logger.error("upload fail!", e);
             throw new EException(ExceptionEnum.UPLOAD_FILE_ERROR);
         }
     }

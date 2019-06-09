@@ -15,14 +15,14 @@ public class SpecificationController {
     @Autowired
     private SpecificationService specificationService;
 
-    // 根据分类id查询规格组
+    // Query the specification group according to the category id
     @GetMapping("groups/{cid}")
     public ResponseEntity<List<SpecGroup>> queryGroupByCid(@PathVariable("cid") Long cid){
         return ResponseEntity.ok(specificationService.queryGroupByCid(cid));
     }
 
     /*
-     * 查询规格参数集合
+     * Query specification parameter set
      * @param: gid
      * @param: cid
      * @param: searching
@@ -38,7 +38,7 @@ public class SpecificationController {
     }
 
     /*
-     * 根据分类cid3查询规格参数详细信息
+     * Query specification parameter details according to category cid3
      * @param: cid
      * @return List<SpecGroup>
      * @author dunklee

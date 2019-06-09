@@ -4,9 +4,22 @@ spring:
   application:
     name: item-service
   datasource:
-    url: jdbc:mysql://localhost:3306/heima?characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/heima?characterEncoding=UTF-8&useSSL=false
     username: root
     password:
+  rabbitmq:
+    host: 54.252.187.62
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 30000ms
+        multiplier: 2
+      exchange: leyou.item.exchange
+    publisher-confirms: true
 eureka:
   client:
     service-url:

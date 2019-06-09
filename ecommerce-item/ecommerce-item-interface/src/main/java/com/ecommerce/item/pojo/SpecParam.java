@@ -16,7 +16,7 @@ public class SpecParam {
     private Long cid;
     private Long groupId;
     private String name;
-    @Column(name = "`numeric`") // 防止和mysql的关键字重复
+    @Column(name = "`numeric`") // Prevent duplicates with mysql keywords
     private Boolean numeric;
     private String unit;
     private Boolean generic;
